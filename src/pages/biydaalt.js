@@ -21,7 +21,7 @@ const studentsData = [
 
 const StudentsPage = () => {
   const [students, setStudents] = useState(studentsData);
-  const [viewType, setViewType] = useState('list'); // list or grid
+  const [viewType, setViewType] = useState('list'); 
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = (event) => {
