@@ -50,36 +50,13 @@ export default function Home() {
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-  const CardGrid = ({ title, data }) => (
-    <div>
-      <p className="text-2xl font-bold border-b-2 pb-2 mb-4">{title}</p>
-      <div className="grid grid-cols-4 gap-4 m-4">
-        {filterData(data).map((item) => (
-          <div
-            key={item.id}
-            className="border-4 border-gray-500 rounded shadow cursor-pointer p-4 text-xs space-y-2 hover:border-black"
-            onClick={() => router.push(`/11a/${item.id}`)}
-          >
-            <img
-              src={item?.images?.[0] || item?.images}
-              alt={item.name}
-              className="w-full h-60 rounded-xl bg-cover border-b-2"
-            />
-            <p className="font-bold text-center text-xl border-t-2 pt-2 text-black">{item.name}</p>
-            <p>{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <div className="mx-auto p-8 bg-gray-100 min-h-screen">
       <div className="flex justify-center mb-6">
         <input
           type="text"
           placeholder="Search..."
-          className="p-2 border rounded-lg w-1/2 shadow-md"
+          className="p-2 border border-slate-500 rounded-lg w-1/2 shadow-md"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -87,11 +64,115 @@ export default function Home() {
 
       {loading && <p className="text-center text-gray-700 font-semibold">Loading...</p>}
 
-      <CardGrid title="Clothes" data={clothesData} />
-      <CardGrid title="Instruments" data={instrumentsData} />
-      <CardGrid title="Historical Tools" data={historicalToolsData} />
-      <CardGrid title="Ethnic Groups" data={ethnicGroupsData} />
-      <CardGrid title="Tourist Attractions" data={touristAttractionsData} />
+      <p className="text-2xl font-bold">Clothes</p>
+      <div className="grid grid-cols-4 gap-4 m-4">
+        {filterData(clothesData).map((item) => (
+          <div
+            key={item.id}
+            className="border-2 border-gray-800 text-black rounded shadow-lg cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
+            onClick={() => router.push(`/11a/${item.id}`)}
+          >
+            <img
+              src={item?.images?.[0] || item?.images}
+              alt={item.name}
+              className="w-full h-60 rounded-xl bg-cover"
+            />
+            <p className="font-bold text-black  text-xl text-center">{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="text-2xl font-bold">Instruments</p>
+      <div className="grid grid-cols-4 gap-4 m-4">
+        {filterData(instrumentsData).map((item) => (
+          <div
+            key={item.id}
+            className="border-2 border-gray-800 rounded text-black shadow-lg cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
+          >
+            <img
+              src={item?.images?.[0] || item?.images}
+              alt={item.name}
+              className="w-full h-60 rounded-xl bg-cover"
+            />
+            <p className="font-bold text-center text-xl text-black">{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="text-2xl font-bold">Historical Tools</p>
+      <div className="grid grid-cols-4 gap-4 m-4">
+        {filterData(historicalToolsData).map((item) => (
+          <div
+            key={item.id}
+            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
+          >
+            <img
+              src={item?.images?.[0] || item?.images}
+              alt={item.name}
+              className="w-full h-60 rounded-xl bg-cover"
+            />
+            <p className="font-bold text-center text-xl text-black">{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-4 gap-4 m-4">
+        {filterData(ethnicGroupsData).map((item) => (
+          <div
+            key={item.id}
+            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
+          >
+            <img
+              src={item?.images?.[0] || item?.images}
+              alt={item.name}
+              className="w-full h-60 rounded-xl bg-cover"
+            />
+            <p className="font-bold text-center text-xl text-black">{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-4 gap-4 m-4">
+        {filterData(historicalFiguresData).map((item) => (
+          <div
+            key={item.id}
+            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
+          >
+            <img
+              src={item?.images?.[0] || item?.images}
+              alt={item.name}
+              className="w-full h-60 rounded-xl bg-cover"
+            />
+            <p className="font-bold text-xl text-center text-black">{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-4 gap-4 m-4">
+        {filterData(touristAttractionsData).map((item) => (
+          <div
+            key={item.id}
+            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
+          >
+            <img
+              src={item?.images?.[0] || item?.images}
+              alt={item.name}
+              className="w-full h-60 rounded-xl bg-cover"
+            />
+            <p className="font-bold text-center text-xl text-black">{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+
+
+
     </div>
   );
 }
