@@ -51,128 +51,144 @@ export default function Home() {
     );
 
   return (
-    <div className="mx-auto p-8 bg-gray-100 min-h-screen">
+    <div className="mx-auto p-8 bg-gradient-to-r from-blue-100 via-pink-100 to-yellow-100 min-h-screen">
+      {/* Search Bar */}
       <div className="flex justify-center mb-6">
         <input
           type="text"
-          placeholder="Search..."
-          className="p-2 border border-slate-500 rounded-lg w-1/2 shadow-md"
+          placeholder="Search for items..."
+          className="p-3 border-2 border-gray-300 rounded-lg w-1/3 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
-      {loading && <p className="text-center text-gray-700 font-semibold">Loading...</p>}
+      {loading && (
+        <p className="text-center text-gray-700 font-semibold text-lg">Loading...</p>
+      )}
 
-      <p className="text-2xl font-bold">Clothes</p>
-      <div className="grid grid-cols-4 gap-4 m-4">
-        {filterData(clothesData).map((item) => (
-          <div
-            key={item.id}
-            className="border-2 border-gray-800 text-black rounded shadow-lg cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
-            onClick={() => router.push(`/11a/${item.id}`)}
-          >
-            <img
-              src={item?.images?.[0] || item?.images}
-              alt={item.name}
-              className="w-full h-60 rounded-xl bg-cover"
-            />
-            <p className="font-bold text-black  text-xl text-center">{item.name}</p>
-            <p>{item.description}</p>
+      <div className="space-y-10">
+        <div>
+          <h2 className="text-3xl font-semibold text-center mb-4">Clothes</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filterData(clothesData).map((item) => (
+              <div
+                key={item.id}
+                className="border-2 border-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 cursor-pointer p-4 space-y-3"
+                onClick={() => router.push(`/11a/${item.id}`)}
+              >
+                <img
+                  src={item?.images?.[0] || item?.images}
+                  alt={item.name}
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+                <p className="font-semibold text-lg text-center">{item.name}</p>
+                <p className="text-sm text-gray-600 text-center">{item.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
 
-      <p className="text-2xl font-bold">Instruments</p>
-      <div className="grid grid-cols-4 gap-4 m-4">
-        {filterData(instrumentsData).map((item) => (
-          <div
-            key={item.id}
-            className="border-2 border-gray-800 rounded text-black shadow-lg cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
-          >
-            <img
-              src={item?.images?.[0] || item?.images}
-              alt={item.name}
-              className="w-full h-60 rounded-xl bg-cover"
-            />
-            <p className="font-bold text-center text-xl text-black">{item.name}</p>
-            <p>{item.description}</p>
+        <div>
+          <h2 className="text-3xl font-semibold text-center mb-4">Instruments</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filterData(instrumentsData).map((item) => (
+              <div
+                key={item.id}
+                className="border-2 border-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 cursor-pointer p-4 space-y-3"
+              >
+                <img
+                  src={item?.images?.[0] || item?.images}
+                  alt={item.name}
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+                <p className="font-semibold text-lg text-center">{item.name}</p>
+                <p className="text-sm text-gray-600 text-center">{item.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
 
-      <p className="text-2xl font-bold">Historical Tools</p>
-      <div className="grid grid-cols-4 gap-4 m-4">
-        {filterData(historicalToolsData).map((item) => (
-          <div
-            key={item.id}
-            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
-          >
-            <img
-              src={item?.images?.[0] || item?.images}
-              alt={item.name}
-              className="w-full h-60 rounded-xl bg-cover"
-            />
-            <p className="font-bold text-center text-xl text-black">{item.name}</p>
-            <p>{item.description}</p>
+        <div>
+          <h2 className="text-3xl font-semibold text-center mb-4">Historical Tools</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filterData(historicalToolsData).map((item) => (
+              <div
+                key={item.id}
+                className="border-2 border-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 cursor-pointer p-4 space-y-3"
+              >
+                <img
+                  src={item?.images?.[0] || item?.images}
+                  alt={item.name}
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+                <p className="font-semibold text-lg text-center">{item.name}</p>
+                <p className="text-sm text-gray-600 text-center">{item.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
 
-      <div className="grid grid-cols-4 gap-4 m-4">
-        {filterData(ethnicGroupsData).map((item) => (
-          <div
-            key={item.id}
-            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
-          >
-            <img
-              src={item?.images?.[0] || item?.images}
-              alt={item.name}
-              className="w-full h-60 rounded-xl bg-cover"
-            />
-            <p className="font-bold text-center text-xl text-black">{item.name}</p>
-            <p>{item.description}</p>
+        <div>
+          <h2 className="text-3xl font-semibold text-center mb-4">Ethnic Groups</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filterData(ethnicGroupsData).map((item) => (
+              <div
+                key={item.id}
+                className="border-2 border-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 cursor-pointer p-4 space-y-3"
+              >
+                <img
+                  src={item?.images?.[0] || item?.images}
+                  alt={item.name}
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+                <p className="font-semibold text-lg text-center">{item.name}</p>
+                <p className="text-sm text-gray-600 text-center">{item.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
 
-      <div className="grid grid-cols-4 gap-4 m-4">
-        {filterData(historicalFiguresData).map((item) => (
-          <div
-            key={item.id}
-            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
-          >
-            <img
-              src={item?.images?.[0] || item?.images}
-              alt={item.name}
-              className="w-full h-60 rounded-xl bg-cover"
-            />
-            <p className="font-bold text-xl text-center text-black">{item.name}</p>
-            <p>{item.description}</p>
+        <div>
+          <h2 className="text-3xl font-semibold text-center mb-4">Historical Figures</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filterData(historicalFiguresData).map((item) => (
+              <div
+                key={item.id}
+                className="border-2 border-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 cursor-pointer p-4 space-y-3"
+              >
+                <img
+                  src={item?.images?.[0] || item?.images}
+                  alt={item.name}
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+                <p className="font-semibold text-lg text-center">{item.name}</p>
+                <p className="text-sm text-gray-600 text-center">{item.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
 
-      <div className="grid grid-cols-4 gap-4 m-4">
-        {filterData(touristAttractionsData).map((item) => (
-          <div
-            key={item.id}
-            className="border-2 border-gray-800 rounded shadow-lg text-black cursor-pointer p-4 text-xs space-y-2 hover:shadow-xl"
-          >
-            <img
-              src={item?.images?.[0] || item?.images}
-              alt={item.name}
-              className="w-full h-60 rounded-xl bg-cover"
-            />
-            <p className="font-bold text-center text-xl text-black">{item.name}</p>
-            <p>{item.description}</p>
+        <div>
+          <h2 className="text-3xl font-semibold text-center mb-4">Tourist Attractions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filterData(touristAttractionsData).map((item) => (
+              <div
+                key={item.id}
+                className="border-2 border-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 cursor-pointer p-4 space-y-3"
+              >
+                <img
+                  src={item?.images?.[0] || item?.images}
+                  alt={item.name}
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+                <p className="font-semibold text-lg text-center">{item.name}</p>
+                <p className="text-sm text-gray-600 text-center">{item.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-
-
-
-
     </div>
   );
 }
