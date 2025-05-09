@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Home() {
   const router = useRouter();
@@ -50,7 +51,16 @@ export default function Home() {
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const handleSubmit = () => {
+      // axios.get
+      // axios.post - shineer data uusgeh
+      // axios.patch - edit buyu 
+      // axios.delete
+      axios.post("https://mongol-api-rest.vercel.app/Clothes");
+    }
+
   return (
+    
     <div className="mx-auto p-8 bg-gradient-to-r from-blue-100 via-pink-100 to-yellow-100 min-h-screen">
       {/* Search Bar */}
       <div className="flex justify-center mb-6">
@@ -62,6 +72,12 @@ export default function Home() {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
+      <div className="flex flex-col justify-center">
+      <button className="bg-blue-400 rounded-2xl p-2">shiner haritsgch uusgeh</button>
+    </div>
+      
+
+      
 
       {loading && (
         <p className="text-center text-gray-700 font-semibold text-lg">Loading...</p>
